@@ -1,1 +1,139 @@
+function is_date(input) {
+  if (input instanceof Date && !isNaN(input)) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+
+is_date("October 13, 2014 11:13:00");     // false
+is_date(new Date(86400000));              // true
+is_date(new Date(99, 5, 24, 11, 33, 30)); // true
+is_date([1, 2, 4, 0]);                    // false
+
+.............................................
+
+function curday(separator = '/') {
+  const d = new Date();
+  return `${d.getMonth() + 1}${separator}${d.getDate()}${separator}${d.getFullYear()}`;
+}
+
+console.log(curday('/'));  // e.g., 6/20/2025
+
+............................................
+
+
+function getDaysInMonth(month, year) {
+  return new Date(year, month, 0).getDate();
+}
+
+console.log(getDaysInMonth(2, 2012)); // 29
+
+..................................................
+
+
+
+function month_name(date) {
+  const months = ["January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"];
+  return months[date.getMonth()];
+}
+
+console.log(month_name(new Date("10/11/2009"))); // October
+
+................................................
+
+
+
+function compare_dates(date1, date2) {
+  if (date1.getTime() === date2.getTime()) return "Date1 = Date2";
+  return date1 > date2 ? "Date1 > Date2" : "Date2 > Date1";
+}
+
+console.log(compare_dates(new Date('11/14/2013'), new Date('11/14/2013')));
+
+
+
+.................................................
+
+function addMinutes(date, mins) {
+  date.setMinutes(date.getMinutes() + mins);
+  return date;
+}
+
+console.log(addMinutes(new Date(2024, 0, 1, 10, 0), 30)); // Adds 30 mins to 10:00 → 10:30
+
+................................................
+
+
+function isWeekend(dateString) {
+  let day = new Date(dateString).getDay();
+  return (day === 0 || day === 6);
+}
+
+console.log(isWeekend("Nov 18, 2023")); // true (Saturday)
+
+....................................................
+
+function daysBetween(d1, d2) {
+  let date1 = new Date(d1);
+  let date2 = new Date(d2);
+  let diff = date2 - date1;
+  return diff / (1000 * 60 * 60 * 24); // ms → days
+}
+
+console.log(daysBetween("04/02/2024", "04/10/2024")); // 8
+
+
+................................................
+
+
+function getLastDay(year, month) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+console.log(getLastDay(2024, 1)); // February → 29 (leap year)
+
+.................................................
+
+function getYesterday(dateStr) {
+  let date = new Date(dateStr);
+  date.setDate(date.getDate() - 1);
+  return date;
+}
+
+console.log(getYesterday("2024-04-02")); // Returns 2024-04-01
+
+....................................................
+
+
+
+function maxDate(dates) {
+  return new Date(Math.max(...dates.map(d => new Date(d))));
+}
+
+console.log(maxDate(["2024/01/01", "2024/03/10", "2024/02/05"])); // 2024/03/10
+
+.........................................................
+
+
+function minDate(dates) {
+  return new Date(Math.min(...dates.map(d => new Date(d))));
+}
+
+console.log(minDate(["2024/01/01", "2024/03/10", "2024/02/05"])); // 2024/01/01
+
+....................................................
+
+
+function convertTime(mins) {
+  let hours = Math.floor(mins / 60);
+  let minutes = mins % 60;
+  return `${hours} hour(s) and ${minutes} minute(s)`;
+}
+
+console.log(convertTime(130)); // 2 hour(s) and 10 minute(s)
+
+
+
 
