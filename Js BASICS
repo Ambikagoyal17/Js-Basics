@@ -1,0 +1,124 @@
+let today = new Date();
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+console.log("Today is: " + days[today.getDay()]);
+
+let hours = today.getHours();
+let minutes = today.getMinutes();
+let seconds = today.getSeconds();
+let ampm = hours >= 12 ? "PM" : "AM";
+
+console.log("Current time is: " + hours + " " + ampm + " : " + minutes + " : " + seconds);
+
+..............
+
+
+window.print();  // nhi aaya
+
+................
+
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1;
+let yyyy = today.getFullYear();
+console.log(mm + '-' + dd + '-' + yyyy);
+console.log(mm + '/' + dd + '/' + yyyy);
+console.log(dd + '-' + mm + '-' + yyyy);
+console.log(dd + '/' + mm + '/' + yyyy);
+
+...........
+
+let a = 5, b = 6, c = 7;
+let s = (a + b + c) / 2;
+let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+console.log(area);
+
+
+...............
+let str = "w3resource"
+
+  str = str.slice(-1) + str.slice(0, -1);
+  console.log(str);
+
+.................
+function isLeap(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+console.log(isLeap(2024));  // true
+...............
+
+for (let year = 2014; year <= 2050; year++) {
+  let d = new Date(year, 0, 1);
+  if (d.getDay() === 0) {
+    console.log("1st Jan is Sunday in: " + year);
+  }
+}
+
+...............
+
+let num = Math.floor(Math.random() * 10) + 1;
+let guess = prompt("Guess number 1-10:");
+if (guess == num) {
+  alert("Good Work");
+} else {
+  alert("Not matched");
+}
+
+
+.............
+let today = new Date();
+let year = today.getFullYear();
+
+let christmas = new Date(year, 11, 25); 
+
+
+if (today > christmas) {
+  christmas = new Date(year + 1, 11, 25);
+}
+
+let oneDay = 1000 * 60 * 60 * 24; // milliseconds in one day
+let diffDays = Math.ceil((christmas - today) / oneDay);
+
+console.log("Days left until Christmas: " + diffDays);
+
+............
+
+
+<!-- HTML -->
+<form>
+  Number 1: <input id="num1"><br>
+  Number 2: <input id="num2"><br>
+  <button type="button" onclick="calculate()">Calculate</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+  let a = parseFloat(document.getElementById("num1").value);
+  let b = parseFloat(document.getElementById("num2").value);
+
+  let multiply = a * b;
+  let divide = b !== 0 ? (a / b) : "Cannot divide by zero";
+
+  document.getElementById("result").innerHTML =
+    "Multiplication: " + multiply + "<br>Division: " + divide;
+}
+</script>
+
+..................
+
+// Celsius to Fahrenheit
+let celsius = 60;
+let fahrenheit = (celsius * 9/5) + 32;
+console.log(celsius + "°C is " + fahrenheit + " °F");
+
+// Fahrenheit to Celsius
+fahrenheit = 45;
+celsius = (fahrenheit - 32) * 5/9;
+console.log(fahrenheit + "°F is " + celsius + "°C");
+
+......................
+
+let url = window.location.href;
+console.log("Current URL is: " + url);
+
