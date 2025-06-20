@@ -1,0 +1,436 @@
+function reverseNumber(num) {
+  let reversed = num.toString().split('').reverse().join('');
+  return parseInt(reversed);
+}
+
+console.log(reverseNumber(32243)); // Output: 34223
+
+...................
+
+
+function isPalindrome(str) {
+  let cleanStr = str.replace(/\s+/g, '').toLowerCase();
+  let reversed = cleanStr.split('').reverse().join('');
+  return cleanStr === reversed;
+}
+
+console.log(isPalindrome("madam"));        // true  
+console.log(isPalindrome("nurse run"));   
+..........................
+
+function stringCombinations(str) {
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i + 1; j <= str.length; j++) {
+      result.push(str.slice(i, j));
+    }
+  }
+  return result;
+}
+
+console.log(stringCombinations("dog")); 
+.................................
+
+
+
+function alphabetOrder(str) {
+  return str.split('').sort().join('');
+}
+console.log(alphabetOrder("webmaster")); 
+
+
+.............................
+function capitalizeWords(str) {
+  let words = str.split(' ');
+  let result = '';
+
+  for (let word of words) {
+    let capitalized = word[0].toUpperCase() + word.slice(1);
+    result += capitalized + ' ';
+  }
+
+  return result.trim(); // remove extra space at the end
+}
+
+console.log(capitalizeWords("the quick brown fox")); 
+
+.........................................
+function findLongestWord(str) {
+  let words = str.split(' ');
+  let longest = words[0];
+  for (let word of words) {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
+  return longest;
+}
+
+console.log(findLongestWord("Web Development Tutorial")); 
+
+
+.....................................
+
+
+function countVowels(str) {
+  let count = 0;
+  let vowels = 'aeiouAEIOU';
+
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(countVowels("Hello World"));
+// Output: 3
+
+..................................
+
+
+
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+console.log(isPrime(7));  // true
+console.log(isPrime(10)); // false
+
+
+.....................................
+
+function getType(value) {
+  return typeof value;
+}
+
+console.log(getType(123));          // "number"
+console.log(getType("hello"));      // "string"
+console.log(getType(true));         // "boolean"
+console.log(getType(undefined));    // "undefined"
+console.log(getType({}));           // "object"
+console.log(getType(function(){})); // "function"
+
+........................................
+
+function identityMatrix(n) {
+  let matrix = [];
+  for (let i = 0; i < n; i++) {
+    let row = [];
+    for (let j = 0; j < n; j++) {
+      row.push(i === j ? 1 : 0);
+    }
+    matrix.push(row);
+  }
+  return matrix;
+}
+
+console.log(identityMatrix(3));
+
+........................
+function secondLowHigh(arr) {
+  let sorted = [...new Set(arr)].sort((a, b) => a - b);
+  return [sorted[1], sorted[sorted.length - 2]];
+}
+
+console.log(secondLowHigh([1, 2, 3, 4, 5])); // [2, 4]
+
+
+..............................
+function isPerfect(num) {
+  let sum = 0;
+  for (let i = 1; i < num; i++) {
+    if (num % i === 0) sum += i;
+  }
+  return sum === num;
+}
+
+console.log(isPerfect(6));   // true
+console.log(isPerfect(28));  // true
+console.log(isPerfect(12));  // false
+
+.................................
+
+
+
+function findFactors(num) {
+  let factors = [];
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) factors.push(i);
+  }
+  return factors;
+}
+
+console.log(findFactors(12)); // [1, 2, 3, 4, 6, 12]
+
+........................................
+
+function amountToCoins(amount, coins) {
+  let result = [];
+  for (let coin of coins) {
+    while (amount >= coin) {
+      amount -= coin;
+      result.push(coin);
+    }
+  }
+  return result;
+}
+
+console.log(amountToCoins(46, [25, 10, 5, 2, 1])); 
+Output: [25, 10, 10, 1]
+
+......................................................
+
+function power(base, exponent) {
+  return Math.pow(base, exponent);
+}
+
+let b = 2;
+let n = 3;
+console.log(power(b, n)); // Output: 8
+
+................................
+
+
+function uniqueChars(str) {
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    if (!result.includes(str[i])) {
+      result += str[i];
+    }
+  }
+  return result;
+}
+
+console.log(uniqueChars("thequickbrownfoxjumpsoverthelazydog"));
+Output: "thequickbrownfxjmpsvlazydg"
+....................................
+
+
+
+function countLetters(str) {
+  let count = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i].toLowerCase(); // make it case-insensitive
+
+    if (char >= 'a' && char <= 'z') {
+      if (count[char]) {
+        count[char]++;
+      } else {
+        count[char] = 1;
+      }
+    }
+  }
+
+  return count;
+}
+
+console.log(countLetters("hello world"));
+Output: { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1 }
+.........................................
+
+
+function binarySearch(arr, target) {
+  let low = 0;
+  let high = arr.length - 1;
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] === target) return mid;
+    else if (arr[mid] < target) low = mid + 1;
+    else high = mid - 1;
+  }
+  return -1;
+}
+
+console.log(binarySearch([1, 2, 3, 4, 5], 4)); // Output: 3 (index)
+
+.......................................
+
+function generateId(length) {
+  let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
+
+console.log(generateId(8)); 
+
+..........................................
+
+
+function getSubsets(arr, subsetLength) {
+  let result = [];
+
+  function combine(start, current) {
+    if (current.length === subsetLength) {
+      result.push([...current]);
+      return;
+    }
+
+    for (let i = start; i < arr.length; i++) {
+      current.push(arr[i]);
+      combine(i + 1, current);
+      current.pop();
+    }
+  }
+
+  combine(0, []);
+  return result;
+}
+
+console.log(getSubsets([1, 2, 3], 2)); 
+Output: [ [1, 2], [1, 3], [2, 3] ]
+.....................................................
+
+
+
+
+function countLetter(str, letter) {
+  let count = 0;
+  for (let char of str) {
+    if (char === letter) count++;
+  }
+  return count;
+}
+
+console.log(countLetter('w3resource.com', 'o')); // Output: 2
+
+
+..................................................
+
+function firstNonRepeated(str) {
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (str.indexOf(char) === str.lastIndexOf(char)) {
+      return char;
+    }
+  }
+  return null;
+}
+
+console.log(firstNonRepeated('abacddbec'));
+Output: 'e'
+
+
+..................................................
+
+function bubbleSort(arr) {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len - i - 1; j++) {
+      if (arr[j] < arr[j + 1]) { // for descending
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
+
+let sample = [12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213];
+console.log(bubbleSort(sample));
+// Output: [3223, 546, 455, 345, 234, 213, 122, 98, 84, 64, 23, 12, 9, 4, 1]
+
+
+.....................................................
+
+function Longest_Country_Name(countries) {
+  let longest = countries[0];
+  for (let country of countries) {
+    if (country.length > longest.length) {
+      longest = country;
+    }
+  }
+  return longest;
+}
+
+console.log(Longest_Country_Name(["Australia", "Germany", "United States of America"]));
+// Output: "United States of America"
+
+.................................................
+
+
+function longestUniqueSubstring(str) {
+  let longest = "";
+  
+  for (let i = 0; i < str.length; i++) {
+    let seen = "";
+    
+    for (let j = i; j < str.length; j++) {
+      let char = str[j];
+      
+      if (seen.includes(char)) {
+        break;
+      } else {
+        seen += char;
+      }
+      
+      if (seen.length > longest.length) {
+        longest = seen;
+      }
+    }
+  }
+  
+  return longest;
+}
+
+console.log(longestUniqueSubstring("abcabcbb"));
+Output: "abc"
+
+..................................................
+
+
+
+function longestPalindrome(str) {
+  let longest = "";
+
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i + 1; j <= str.length; j++) {
+      let substr = str.slice(i, j);
+      if (isPalindrome(substr) && substr.length > longest.length) {
+        longest = substr;
+      }
+    }
+  }
+
+  return longest;
+}
+
+function isPalindrome(s) {
+  return s === s.split("").reverse().join("");
+}
+
+console.log(longestPalindrome("bananas"));
+// Output: "anana"
+
+..................................................
+
+function greet(name) {
+  console.log("Hello, " + name);
+}
+
+function processUserInput(callback) {
+  let name = "Ambika";
+  callback(name);
+}
+
+processUserInput(greet);
+
+
+...................................................
+
+function sampleFunction() {
+  return sampleFunction.name;
+}
+
+console.log(sampleFunction()); // Output: "sampleFunction"
+
