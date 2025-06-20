@@ -1,0 +1,93 @@
+let str = "ambika Goyal";
+let strObj = new String('ambika');
+let str1 = 233;
+
+console.log(str instanceof String);     // false
+console.log(strObj instanceof String);  // true
+console.log(str1 instanceof Number);    // false
+console.log(new Number(233) instanceof Number); // true
+
+...............................
+
+function is_Blank(str) {
+  return str.trim() === '';
+}
+
+console.log(is_Blank(''));       // true
+console.log(is_Blank('abc'));    // false
+
+.......................................
+
+function string_to_array(str) {
+  return str.split(" ");
+}
+
+console.log(string_to_array("Ambika Goyal")); 
+
+
+..........................................
+
+
+function truncate_string(str, num) {
+  return str.slice(0, num);
+}
+console.log(truncate_string("Ambika Goyal", 4)); 
+
+
+..........................................
+
+function abbrev_name(name) {
+  let parts = name.split(" ");
+  return parts[0] + " " + parts[1].charAt(0) + ".";
+}
+console.log(abbrev_name("Ambika goyal")); 
+
+.......................................
+
+
+function protect_email(email) {
+  return email.replace(/(.{5}).+(@.+)/, "$1...$2");
+}
+console.log(protect_email("Ambika Goyal@example.com")); 
+
+............................................
+
+
+function string_parameterize(str) {
+  return str.toLowerCase().split(' ').join('-');
+}
+
+console.log(string_parameterize("Ambika at InmorpHIS"));
+
+
+
+...........................................
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+console.log(capitalize('js string exercises')); 
+// "Js string exercises"
+
+.............................................
+
+
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, char => char.toUpperCase());
+}
+
+console.log(capitalizeWords("hello world from ambika"));
+// Output: "Hello World From Ambika"
+
+.........................................
+
+function swapcase(str) {
+  return str.split('').map(c =>
+    c === c.toLowerCase() ? c.toUpperCase() : c.toLowerCase()
+  ).join('');
+}
+
+console.log(swapcase('AaBbc')); 
+// "aAbBC"
+
