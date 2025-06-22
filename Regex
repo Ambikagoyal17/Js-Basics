@@ -1,0 +1,203 @@
+1.
+function isFirstCharacterUppercase(str) {  
+const regex = /^[A-Z]/;  
+return regex.test(str);  
+}  
+console.log(isFirstCharacterUppercase('JavaScript Exercises'));  
+console.log(isFirstCharacterUppercase('javascript Exercises'));  
+console.log(isFirstCharacterUppercase('123Hello'));    
+console.log(isFirstCharacterUppercase('HELLO'));        
+2.  .....................................
+
+function isValidCreditCard(cardNumber) {  
+const digits = cardNumber.replace(/\D/g, ');  
+if (digits.length < 13 || digits.length > 19) {  
+return false;  
+}  
+let sum = 0;  
+ let shouldDouble = false;  
+ for (let i = digits.length - 1; i >= 0; i--) {  
+     let digit = parseInt(digits[i], 10);  
+     if (shouldDouble) {  
+         digit *= 2;  
+         if (digit > 9) {  
+             digit -= 9;  
+         }  
+     }  
+     sum += digit;  
+     shouldDouble = !shouldDouble;  
+ }  
+ return sum % 10 === 0;  
+}  
+console.log(isValidCreditCard('4539 1488 0343  6467'));  
+console.log(isValidCreditCard('1234 5678 9876  5432'));  
+console.log(isValidCreditCard('6011-1111-1111-1117'));  
+console.log(isValidCreditCard('1234567812345678'));  
+ 
+  
+3.  ......................................................
+const emailPattern = 
+/^[a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~]+(?:\.[a-zA-Z0-9!#$%&'*+\-/=?^_`{|}~]+)*@[a-zA-Z0-9-]+\.[a
+zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;  
+console.log(emailPattern.test('example@example.com'))  
+console.log(emailPattern.test('user.name+tag+sorting@example.com'));  
+console.log(emailPattern.test('user@subdomain.example.com'));  
+console.log(emailPattern.test('user@domain.co.uk'));  
+console.log(emailPattern.test('invalid@domain..com'))  
+console.log(emailPattern.test('invalid@domain,com'));  
+console.log(emailPattern.test('invalid@domain!com'));  
+console.log(emailPattern.test('invalid@domain#com'));  
+  
+4.........................................................  
+function findDatesInString(text) {  
+const datePattern = /\b(?:\d{1,4}[/-]\d{1,2}[/-]\d{1,4}|\d{1,4}[ ]?\d{1,2}[ ]?\d{1,4})\b/g;  
+return text.match(datePattern) || [];  
+}  
+console.log(findDatesInString('Today is 2025-01-20 and yesterday was 2025/01/19.'));  
+console.log(findDatesInString('The event is on 15/03/2024 and the deadline is 
+2024-12-31.'));  
+console.log(findDatesInString('No dates here!'));  
+  
+5.  ..........................................
+  
+function trimString(str) {  
+return str.replace(/^\s+|\s+$/g, ');  
+}  
+console.log(trimString('  Hello World  '));  
+console.log(trimString('\t\tTrim\t\n\n'));  
+console.log(trimString('NoExtraSpaces'));  
+console.log(trimString('  Trim with spaces  '));  
+
+6.................................................  
+function trimString(str) {  
+return str.replace(/^\s+|\s+$/g, ');  
+}  
+console.log(trimString('  Hello World  '));  
+console.log(trimString('\t\tTrim\t\n\n'));  
+console.log(trimString('NoExtraSpaces'));  
+console.log(trimString('  Trim with spaces  '));  
+  
+7...................................................  
+function isIP(value) {  
+const ipPattern = 
+/^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}$/;  
+return ipPattern.test(value);  
+}  
+console.log(isIP('192.168.0.1'));  
+console.log(isIP('255.255.255.255'));  
+console.log(isIP('999.999.999.999'));  
+  
+8.......................................................  
+Solution:  
+function countVowels(str) {  
+const vowels = str.match(/[aeiouAEIOU]/g);  
+return vowels ? vowels.length : 0;  
+}  
+console.log(countVowels('United States'));  
+  
+9.........................................  
+function isValidURL(value) {  
+const urlPattern = 
+/^(https?:\/\/)?([\w-]+(?:\.[\w-]+)+)(:\d+)?(\/[-\w@:%_\+.~#?&//=]*)?$/;  
+return urlPattern.test(value);  
+}  
+console.log(isValidURL('https://www.example.com'));  
+console.log(isValidURL('www.example.com'))  
+console.log(isValidURL('not-a-url'));  
+                                                
+10.  ....................................................
+function isAlphanumeric(value) {  
+const alphanumericPattern = /^[a-zA-Z0-9]+$/;  
+return alphanumericPattern.test(value);  
+}  
+console.log(isAlphanumeric('abc123'));  
+console.log(isAlphanumeric('abc123!')); 
+                                                
+11.  ......................................................
+function isTimeString(value) {  
+const timePattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;  
+return timePattern.test(value);  
+}  
+console.log(isTimeString('14:30'));  
+console.log(isTimeString('2:30 PM'));  
+                                                
+12.  .............................................
+function isUSZipCode(value) {  
+const usZipPattern = /^\d{5}(?:[-\s]\d{4})?$/;  
+return usZipPattern.test(value);  
+}  
+console.log(isUSZipCode('12345'));  
+console.log(isUSZipCode('12345-6789')); 
+                                                
+13.  ..........................................
+function isUKPostCode(value) {  
+const ukPostPattern = /^[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}$/i;  
+return ukPostPattern.test(value);  
+}  
+console.log(isUKPostCode('SW1A 1AA'));  
+console.log(isUKPostCode('12345'));    
+                                                
+14.  ..........................................
+function isCanadaPostCode(value) {  
+const canadaPostPattern = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;  
+return canadaPostPattern.test(value);  
+}  
+console.log(isCanadaPostCode('K1A 0B1'));  
+console.log(isCanadaPostCode('12345'));  
+                                                
+15.  ..................................................
+function isSSN(value) {  
+const ssnPattern = /^(?!000|666|9\d{2})\d{3}[- ]?(?!00)\d{2}[- ]?(?!0{4})\d{4}$/;  
+return ssnPattern.test(value);  
+}  
+console.log(isSSN('123-45-6789'));  
+console.log(isSSN('000-00-0000'));  
+                                                
+16.  .....................................................
+function isHexadecimal(value) {  
+const hexPattern = /^[0-9A-Fa-f]+$/;  
+return hexPattern.test(value);  
+}  
+console.log(isHexadecimal('1F3A'));  
+console.log(isHexadecimal('1G3A')); 
+                                                
+17.  .................................................
+function isHexColor(value) {  
+const hexColorPattern = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;  
+return hexColorPattern.test(value);  
+}  
+console.log(isHexColor('#1F3A'));  
+console.log(isHexColor('1G3A'));  
+                                                
+18.  ..................................................
+function isDomain(value) {  
+const domainPattern = /^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+[A-Za-z]{2,6}$/;  
+return domainPattern.test(value);  
+}  
+console.log(isDomain('example.com'));  
+console.log(isDomain('invalid_domain'));  
+                                                
+19.  ..........................................
+function isHTML(value) {  
+const htmlPattern = /<\/?[a-z][\s\S]*>/i;  
+return htmlPattern.test(value);  
+}  
+console.log(isHTML('<p>Hello</p>'));  
+console.log(isHTML('Hello'))  
+                                                
+20.  ......................................................
+function containsAlphaDashUnderscore(value) {  
+const pattern = /^[a-zA-Z-_]+$/;  
+return pattern.test(value);  
+}  
+console.log(containsAlphaDashUnderscore('example_word'));  
+console.log(containsAlphaDashUnderscore('example word!'));  
+                                                
+21.  ..........................................
+                                                
+function thousands_separators(n) {  
+return n.toLocaleString();  
+}  
+console.log(thousands_separators(1000))  
+console.log(thousands_separators(10000.23));  
+console.log(thousands_separators(100000));  
